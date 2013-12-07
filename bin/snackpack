@@ -15,7 +15,7 @@ unless FileTest.exists?(config)
     puts "Where would you like to save ruby tapas episodes? "
     puts  "example: /home/username/ruby-tapas/"
     puts "Make sure to include the trailing slash /"
-    save_folder = STDIN.gets.strip
+    save_folder = STDIN.gets.strip.nil? ? Dir.home(user) + "/ruby-tapas/" : STDIN.gets.strip
     File.open(config, 'w') { |f| f.puts ":stomach: " + save_folder.inspect }
   else
     exit
